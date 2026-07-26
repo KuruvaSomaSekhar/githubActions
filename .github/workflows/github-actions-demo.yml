@@ -1,8 +1,13 @@
 name: Github actions demo
 run-name: ${{ github.actor }} ${{ github.event_name }} is testing out GitHub Actions 🚀
-on: [pull_request,push]
-branches:
-    - dev
+on:
+  push:
+    branches:
+      - dev
+      - 'releases/**' # Matches release/v1, release/v2, etc.
+  pull_request:
+    branches:
+      - dev
 jobs:
   explore-github-actions:
     runs-on: ubuntu-latest
